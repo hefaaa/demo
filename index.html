@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Water Pipeline Monitoring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Water Pipeline Monitoring Dashboard</h1>
+
+<div id="dashboard">
+  <p>Status: <span id="status" class="green">NORMAL</span></p>
+  <button onclick="showPipes()">View Pipes</button>
+</div>
+
+<div id="pipes" class="hidden">
+  <h2>Pipes</h2>
+  <ul>
+    <li onclick="showDetails()">Pipe IN-001 (Normal)</li>
+    <li>Pipe IN-002 (Warning)</li>
+  </ul>
+  <button onclick="goBack()">Back</button>
+</div>
+
+<div id="details" class="hidden">
+  <h2>Pipe IN-001 Details</h2>
+  <p>pH: 7.2</p>
+  <p>Turbidity: 2 NTU</p>
+  <p>TDS: 420 ppm</p>
+  <p>Pressure: Normal</p>
+  <button onclick="triggerAlert()">Simulate Contamination</button>
+  <button onclick="goBack()">Back</button>
+</div>
+
+<div id="alert" class="hidden red">
+  🚨 ALERT: Water Contamination Detected!
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
