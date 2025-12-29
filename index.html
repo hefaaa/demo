@@ -1,41 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Water Pipeline Monitoring</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Water Pipeline Monitoring Dashboard</h1>
+<header>
+  <h1>💧 Water Pipeline Monitoring System</h1>
+</header>
 
-<div id="dashboard">
-  <p>Status: <span id="status" class="green">NORMAL</span></p>
-  <button onclick="showPipes()">View Pipes</button>
-</div>
+<nav>
+  <button onclick="showSection('dashboard')">Dashboard</button>
+  <button onclick="showSection('pipes')">Pipes</button>
+  <button onclick="showSection('map')">Map</button>
+</nav>
 
-<div id="pipes" class="hidden">
-  <h2>Pipes</h2>
-  <ul>
-    <li onclick="showDetails()">Pipe IN-001 (Normal)</li>
-    <li>Pipe IN-002 (Warning)</li>
-  </ul>
-  <button onclick="goBack()">Back</button>
-</div>
+<section id="dashboard" class="section">
+  <h2>Dashboard</h2>
+  <div class="card">
+    <p>Overall Status: <span id="overallStatus" class="status normal">NORMAL</span></p>
+    <p>Total Pipes: 5</p>
+    <p>Active Alerts: <span id="alertCount">1</span></p>
+  </div>
+</section>
 
-<div id="details" class="hidden">
-  <h2>Pipe IN-001 Details</h2>
-  <p>pH: 7.2</p>
-  <p>Turbidity: 2 NTU</p>
-  <p>TDS: 420 ppm</p>
-  <p>Pressure: Normal</p>
-  <button onclick="triggerAlert()">Simulate Contamination</button>
-  <button onclick="goBack()">Back</button>
-</div>
+<section id="pipes" class="section hidden">
+  <h2>All Pipes</h2>
+  <div class="pipe-list">
+    <div class="pipe normal" onclick="viewPipe(1)">Pipe IN‑001</div>
+    <div class="pipe warning" onclick="viewPipe(2)">Pipe IN‑002</div>
+    <div class="pipe critical" onclick="viewPipe(3)">Pipe IN‑003</div>
+    <div class="pipe normal" onclick="viewPipe(4)">Pipe IN‑004</div>
+    <div class="pipe normal" onclick="viewPipe(5)">Pipe IN‑005</div>
+  </div>
+</section>
 
-<div id="alert" class="hidden red">
-  🚨 ALERT: Water Contamination Detected!
-</div>
+<section id="details" class="section hidden">
+  <h2 id="pipeTitle">Pipe Details</h2>
+  <div class="card">
+    <p>pH: <span id="ph"></span></p>
+    <p>Turbidity: <span id="turbidity"></span></p>
+    <p>TDS: <span id="tds"></span></p>
+    <p>Status: <span id="pipeStatus" class="status"></span></p>
+    <button onclick="simulateAlert()">Simulate Contamination</button>
+  </div>
+</section>
+
+<section id="map" class="section hidden">
+  <h2>Map View (Simulated)</h2>
+  <div class="map">
+    <div class="marker normal" style="top:40%; left:30%;">IN‑001</div>
+    <div class="marker warning" style="top:55%; left:50%;">IN‑002</div>
+    <div class="marker critical" style="top:65%; left:60%;">IN‑003</div>
+    <div class="marker normal" style="top:35%; left:70%;">IN‑004</div>
+    <div class="marker normal" style="top:50%; left:20%;">IN‑005</div>
+  </div>
+</section>
 
 <script src="script.js"></script>
 </body>
 </html>
+
